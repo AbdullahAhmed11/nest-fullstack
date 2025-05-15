@@ -11,13 +11,38 @@ export default function AppPage() {
   };
 
   if (!isAuthenticated) {
-    return <p className="text-center mt-10">Unauthorized. Please sign in.</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Unauthorized Access
+          </h2>
+          <p className="text-gray-600 mb-4">Please sign in to continue.</p>
+          <button
+            onClick={() => navigate("/signin")}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Go to Sign In
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="p-6 text-center">
-      <h1 className="text-2xl font-bold mb-4">Welcome to the application.</h1>
-      <button className="btn" onClick={logout}>Logout</button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-lg bg-white p-8 rounded-xl shadow-md text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          Welcome to the Application
+        </h1>
+        <p className="text-gray-600 mb-6">You're successfully signed in.</p>
+        <button
+          onClick={logout}
+          className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
